@@ -1,0 +1,5 @@
+package com.userp.entity;
+
+public class UserProfile {
+
+}

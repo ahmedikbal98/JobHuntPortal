@@ -1,0 +1,55 @@
+package com.userp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.userp.entity.UserProfile;
+import com.userp.exception.ResourceNotFoundException;
+import com.userp.repository.UserProfileRepository;
+
+
+
+public class UserProfileSeriveImpl implements UserProfileService {
+
+
+  @Autowired
+  UserProfileRepository userProfileRepository;
+
+	
+	//Create
+	@Override
+	public String createAnUseProfile(UserProfile userProfile) {
+	
+	  userProfileRepository.save(userProfile);
+		return "User profile is created successfully ";
+	}
+    
+	//FindSingleProfile
+	@Override
+	public UserProfile getASingleUserProfile(Long userId) {
+		
+		return userProfileRepository.findById(userId).orElseThrow(
+				()->new ResourceNotFoundException("User Profile not found")
+				);
+	}
+    
+	//FindAllProfile
+	@Override
+	public List<UserProfile> getAllUserprofile() {
+		
+		return userProfileRepository.findAll();
+	}
+  
+	
+	//Delete a profile
+	@Override
+	public Boolean deleteUserProfile(Long userId) {
+		UserProfile profile = userProfileRepository.findById(userId);
+	
+		return false;
+		
+	}
+
+}

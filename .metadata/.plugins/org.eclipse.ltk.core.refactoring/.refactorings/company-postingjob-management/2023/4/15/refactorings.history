@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Company.java&apos; to &apos;jobs-post-management/src/main/java/com.job.enitity&apos;&#x0D;&#x0A;- Original project: &apos;company-postingjob-management&apos;&#x0D;&#x0A;- Destination element: &apos;jobs-post-management/src/main/java/com.job.enitity&apos;&#x0D;&#x0A;- Original element: &apos;com.company.entity.Company.java&apos;" description="Copy compilation unit" destination="=jobs-post-management/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.job.enitity" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.company.entity{Company.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1681586235290" units="1" version="1.0"/>
+</session>

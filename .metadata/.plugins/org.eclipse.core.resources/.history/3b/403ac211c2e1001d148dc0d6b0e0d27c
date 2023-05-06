@@ -1,0 +1,45 @@
+package com.userp.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.userp.entity.UserProfile;
+import com.userp.repository.UserProfileRepository;
+
+
+
+@Autowired
+UserProfileRepository userprofileRepository;
+
+public class UserProfileSeriveImpl implements UserProfileService {
+
+	
+	
+	//Create
+	@Override
+	public String createAnUseProfile(UserProfile userProfile) {
+	
+		UserProfileRepository.save(userProfile);
+		return "User profile is created successfully ";
+	}
+
+	@Override
+	public UserProfile getASingleUserProfile(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserProfile> getAllUserprofile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean deleteUserProfile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

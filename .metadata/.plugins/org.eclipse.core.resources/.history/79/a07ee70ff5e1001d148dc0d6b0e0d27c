@@ -1,0 +1,67 @@
+package com.userp.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.userp.entity.UserProfile;
+import com.userp.exception.ResourceNotFoundException;
+import com.userp.externalservice.JobApplicationService;
+import com.userp.model.JobApplication;
+import com.userp.repository.UserProfileRepository;
+
+
+@Service
+public class UserProfileSeriveImpl implements UserProfileService {
+
+
+  @Autowired
+  UserProfileRepository userProfileRepository;
+  
+  //External service
+  
+  @Autowired
+  JobApplicationService jobApplicationService;
+
+	
+	//Create
+	@Override
+	public String createAnUseProfile(UserProfile userProfile) {
+	
+	  userProfileRepository.save(userProfile);
+		return "User profile is created successfully ";
+	}
+    
+	
+	
+	//FindSingleProfile
+	@Override
+	public UserProfile getASingleUserProfile(Long userId) {
+		UserProfile up =  userProfileRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User Profile is not found"));				
+		List<JobApplication> appliedJobRaw  = (List<JobApplication>) jobApplicationService.getAllApplication(userId);
+		List<Job> pureJob = appliedJobRaw.stream()
+	}
+	
+	
+	
+    
+	//FindAllProfile
+	@Override
+	public List<UserProfile> getAllUserprofile() {
+		
+		return userProfileRepository.findAll();
+	}
+  
+	
+	//Delete a profile
+	@Override
+	public void deleteUserProfile(Long userId) {
+	
+	   userProfileRepository.deleteById(userId);
+	
+		
+	}
+
+}

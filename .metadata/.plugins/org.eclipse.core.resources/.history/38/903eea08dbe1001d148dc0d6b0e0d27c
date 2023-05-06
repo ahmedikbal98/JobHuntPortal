@@ -1,0 +1,5 @@
+package com.jobapplication.exception;
+
+public class ResourceNotFoundException {
+
+}

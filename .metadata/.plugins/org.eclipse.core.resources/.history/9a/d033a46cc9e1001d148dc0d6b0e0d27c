@@ -1,0 +1,29 @@
+package com.userp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.userp.entity.UserProfile;
+import com.userp.service.UserProfileService;
+
+@RestController
+@RequestMapping("userprofile/")
+public class UserProfileController {
+    @Autowired
+	UserProfileService userProfileService;
+	
+  //create 
+  @PostMapping("create")
+   public ResponseEntity<String> createAnUserProfile(@RequestBody UserProfile userProfile ){
+	  return ResponseEntity.status(HttpStatus.CREATED).body(userProfileService.createAnUseProfile(userProfile));
+  }
+  
+	
+	
+
+}

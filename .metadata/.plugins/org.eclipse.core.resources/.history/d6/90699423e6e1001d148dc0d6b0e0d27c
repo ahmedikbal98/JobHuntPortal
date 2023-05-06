@@ -1,0 +1,5 @@
+package com.jopbapplication.model;
+
+public class JobApplicationResponse {
+
+}

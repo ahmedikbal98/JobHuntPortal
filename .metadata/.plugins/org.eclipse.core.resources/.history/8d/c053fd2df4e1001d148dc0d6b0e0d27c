@@ -1,0 +1,5 @@
+package com.jobapplication.externalservice;
+
+public interface JobService {
+
+}

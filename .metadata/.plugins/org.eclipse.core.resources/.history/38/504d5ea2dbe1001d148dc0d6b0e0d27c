@@ -1,0 +1,46 @@
+package com.jobapplication.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.jobapplication.entity.JobApplication;
+import com.jobapplication.repository.JobApplicationRepository;
+import com.userp.exception.ResourceNotFoundException;
+
+public class JobApplicationServiceImpl implements JobApplicationService {
+     
+	@Autowired
+	JobApplicationRepository applicationRepo;
+	
+	
+	//Create
+	@Override
+	public String createJobApplication(JobApplication application) {
+	    JobApplication ja = applicationRepo.save(application);
+	    Long appId = ja.getApplicationId();
+		return "Application created Successfully...Application id is "+appId;
+	}
+    
+	//Get a single
+	@Override
+	public JobApplication getSingleJobApplication(Long applicationId) {
+		
+		return applicationRepo.findById(applicationId).orElseThrow(()-> new com.jobapplication.exception.ResourceNotFoundException("invalid job application id"));			
+	}
+     
+	//Get all applications
+	@Override
+	public List<JobApplication> getAllApplication() {
+		
+		return applicationRepo.findAll();
+	}
+    
+	//delete an application
+	@Override
+	public void deleteAnApplication(Long applicationId) {
+		applicationRepo.deleteById(applicationId);
+
+	}
+
+}

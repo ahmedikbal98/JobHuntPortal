@@ -1,0 +1,16 @@
+package com.jobapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+@EnableFeignClients
+@SpringBootApplication
+public class JobApplicationManagementApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JobApplicationManagementApplication.class, args);
+	}
+
+}

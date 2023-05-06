@@ -1,0 +1,5 @@
+package com.userp.repository;
+
+public interface UserProfileRepository {
+
+}

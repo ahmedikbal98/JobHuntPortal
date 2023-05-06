@@ -1,0 +1,33 @@
+package com.jobapplication.service;
+
+import java.util.List;
+
+import com.jobapplication.entity.JobApplication;
+
+public class JobApplicationServiceImpl implements JobApplicationService {
+
+	@Override
+	public String createJobApplication(JobApplication application) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JobApplication getSingleJobApplication(Long applicationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<JobApplication> getAllApplication() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteAnApplication(Long applicationId) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

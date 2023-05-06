@@ -1,0 +1,17 @@
+package com.userp.externalservice;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.userp.model.JobApplication;
+
+
+
+@FeignClient(name = "JOB-APPLICATION-SERVICE")
+public interface JobApplicationService {
+	public ResponseEntity<List<JobApplication>> getAllApplication(@PathVariable Long userId);
+	
+}

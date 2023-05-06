@@ -1,0 +1,52 @@
+package com.jobapplication.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jobapplication.entity.JobApplication;
+import com.jobapplication.service.JobApplicationService;
+
+@RestController
+@RequestMapping("job-application/")
+public class JobApplicationController {
+	
+	@Autowired
+	JobApplicationService jobApplicationService;
+	
+	//Create a job application
+	@PostMapping("create")
+	public ResponseEntity<String> createAnApplication(@RequestBody JobApplication jobApplication ){
+		return ResponseEntity.status(HttpStatus.CREATED).body(jobApplicationService.createJobApplication(jobApplication));
+	}
+	
+	// get a single application
+	@GetMapping("get-application/{applicationId}")
+	public ResponseEntity<JobApplication> getAnApplication(@PathVariable Long applicationId){
+		return ResponseEntity.ok(jobApplicationService.getSingleJobApplication(applicationId));
+	}
+	
+	// get ALL application
+	@GetMapping("get-all-application")
+	public ResponseEntity<List<JobApplication>> getAllApplication(){
+		return ResponseEntity.ok(jobApplicationService.getAllApplication());
+	}
+	
+	//Delete an application
+	
+	@DeleteMapping("delete/{applicationId}")
+	public void deleteApplication(@PathVariable Long applicationId){
+		jobApplicationService.deleteAnApplication(applicationId);
+	}
+	
+
+}

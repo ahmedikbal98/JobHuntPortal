@@ -1,0 +1,87 @@
+package com.userp.service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.userp.entity.UserProfile;
+import com.userp.exception.ResourceNotFoundException;
+import com.userp.externalservice.JobApplicationService;
+import com.userp.externalservice.JobService;
+import com.userp.model.Job;
+import com.userp.model.JobApplication;
+import com.userp.repository.UserProfileRepository;
+
+
+@Service
+public class UserProfileSeriveImpl implements UserProfileService {
+
+
+  @Autowired
+  UserProfileRepository userProfileRepository;
+  
+  //ExterNal Services
+  @Autowired 
+  JobApplicationService jobApplicationService;
+  
+  @Autowired
+  JobService jobService;
+	
+	//Create
+	@Override
+	public String createAnUseProfile(UserProfile userProfile) {
+	
+	  userProfileRepository.save(userProfile);
+		return "User profile is created successfully ";
+	}
+    
+	//FindSingleProfile
+	@Override
+	public UserProfile getASingleUserProfile(Long userId) {
+		//Raw result... Jobs to be set
+		UserProfile res =  userProfileRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User Profile is not found"));				
+		
+		//getting all job application applied by this user from APPLICATION-SERVICE
+		List<JobApplication> appliedJobs = jobApplicationService.getAllApplicationByUserId(userId).getBody();
+       
+		 //fetching actual job data from JOB-SERVICE
+		List<Job> jobsInfo = appliedJobs.stream().map(
+				
+				jobApplication -> {
+					
+					Job j = jobService.getJobByIdApi(jobApplication.getJobId()).getBody();
+					return j;
+				}
+				).collect(Collectors.toList());
+		
+		//Setting jobList in user object
+        	res.setJobList(jobsInfo);
+       //returning final result
+        	return res;	
+        	
+	}
+	
+	
+    
+	//FindAllProfile
+	@Override
+	public List<UserProfile> getAllUserprofile() {
+		
+		return userProfileRepository.findAll();
+	}
+  
+	
+	//Delete a profile
+	@Override
+	public void deleteUserProfile(Long userId) {
+	
+	   userProfileRepository.deleteById(userId);
+	
+		
+	}
+
+}
