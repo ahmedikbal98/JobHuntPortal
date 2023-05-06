@@ -1,0 +1,59 @@
+package com.company.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.company.entity.Company;
+import com.company.model.Job;
+import com.company.service.CompanyService;
+
+@RestController
+@RequestMapping("/company")
+public class CompanyController {
+     @Autowired
+	 CompanyService companyService;
+	
+	//Creating a Company API
+    @PostMapping("/create")
+	public ResponseEntity<Company> createACompany(@RequestBody Company company){
+		return ResponseEntity.status(HttpStatus.CREATED).body(companyService.createCompany(company));
+	}
+	
+    //Create a job post of this company (company id need to be get from authentication token)
+//    @PostMapping("/createJob/{companyId}")
+//	public ResponseEntity<Job> createAJob(@RequestBody Job job, @PathVariable Long companyId){
+//		return ResponseEntity.status(HttpStatus.CREATED).body(companyService.createjobForThisCompany(job,companyId));
+//	}
+//    
+    
+	//Finding a Company with company id API
+	@GetMapping("/getCompany/{companyId}")
+	public ResponseEntity<Company> findCompanyById(@PathVariable Long companyId){
+		return ResponseEntity.ok(companyService.getCompanyById(companyId));
+	}
+	
+	//Get ALL company registered
+	@GetMapping("/getAll")
+	public ResponseEntity<List<Company>> getAllCompany(){
+		return ResponseEntity.ok(companyService.getAllCompany());
+	}
+	
+	//Deleting a Company
+
+	@DeleteMapping("/delete/{companyId}")
+	public String deleteAJob(@PathVariable Long companyId){
+		companyService.deleteCompany(companyId);
+		return "Company is deleted";
+	}
+	
+}
