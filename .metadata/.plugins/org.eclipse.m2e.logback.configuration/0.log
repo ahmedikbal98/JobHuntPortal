@@ -3028,3 +3028,12 @@ java.net.URISyntaxException: Illegal character in path at index 20: file:/C:/Use
 2023-04-24 23:11:31,970 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
 2023-04-24 23:11:31,998 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
 2023-04-24 23:11:32,000 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Ikbal Ahmed\OneDrive\Desktop\JobPortalApp\jobs-post-management\src\test\resources
+2023-05-06 09:20:59,597 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-05-06 09:24:27,828 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-05-06 09:24:27,842 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-05-06 09:24:27,844 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Ikbal Ahmed\OneDrive\Desktop\JobPortalApp\company-postingjob-management\src\test\resources
+2023-05-06 09:24:29,047 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-05-06 09:24:29,062 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-05-06 09:24:29,065 [Worker-5: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\Ikbal Ahmed\OneDrive\Desktop\JobPortalApp\jobs-post-management\src\test\resources
+2023-05-06 09:29:27,357 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-05-06 09:29:27,367 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
